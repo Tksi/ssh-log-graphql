@@ -1,0 +1,13 @@
+"組織"
+type AuthLogOrg {
+  "AuthLogOrganizationName"
+  organizationName: String
+  "その組織が使うユーザ名のリスト"
+  userList: [String!]!
+  "その組織が使うパスワードのリスト"
+  passwordList: [String!]!
+  "その組織に属しているIPアドレスのリスト"
+  ipList: [AuthLogIp!]!
+  "期間"
+  range: TimeRange!
+}

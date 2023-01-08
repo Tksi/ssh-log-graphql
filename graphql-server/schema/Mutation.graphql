@@ -1,0 +1,30 @@
+"Mutation(データの追加)"
+type Mutation {
+  "DBにログを追加"
+  addDB(
+    "ログ1行分"
+    logLine: String!
+    "ログの形式"
+    logType: LogType! = main_sshd4
+  ): AuthLog!
+}
+
+"ログの形式"
+enum LogType {
+  "一般的なログ形式"
+  general
+  "main(sshd4)のログ形式"
+  main_sshd4
+  "main(sshd3)のログ形式"
+  main_sshd3
+  "honeyPot(sshd2)のログ形式"
+  honeyPot_sshd2
+  "honeyPot(sshd3_1)のログ形式"
+  honeyPot_sshd3_1
+  "honeyPot(sshd3_2)のログ形式"
+  honeyPot_sshd3_2
+  "honeyPot(sshd3_3)のログ形式"
+  honeyPot_sshd3_3
+  "honeyPot(sshd4)のログ形式"
+  honeyPot_sshd4
+}

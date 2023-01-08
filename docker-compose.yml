@@ -1,0 +1,52 @@
+version: '3'
+services:
+  frontend:
+    container_name: frontend
+    image: node:17-alpine
+    tty: true
+    environment:
+      TZ: Asia/Tokyo
+    volumes:
+      - ./frontend:/usr/src/frontend
+    ports:
+      - 3000:3000
+    working_dir: /usr/src/frontend
+    command: sh -c "npm install && npm run dev"
+    depends_on:
+      - graphql-server
+
+  graphql-server:
+    container_name: graphql-server
+    image: node:17-alpine
+    tty: true
+    environment:
+      TZ: Asia/Tokyo
+    volumes:
+      - ./graphql-server:/usr/src/graphql-server
+    ports:
+      - 4000:4000
+    working_dir: /usr/src/graphql-server
+    command: sh -c "npm install && npm run dev"
+    depends_on:
+      - mongodb
+
+  mongodb:
+    container_name: mongodb
+    build: ./mongodb
+    tty: true
+    environment:
+      TZ: Asia/Tokyo
+    command: sh -c "mongod --quiet --bind_ip 0.0.0.0 & mongoimport --db sshLogs --collection sshLog --file dummy.json --jsonArray && tail -f /dev/null"
+
+  dummy-ssh-server:
+    container_name: dummy-ssh-server
+    build: ./tools/log2mutation
+    tty: true
+    environment:
+     TZ: Asia/Tokyo
+    volumes:
+      - ./tools/log2mutation:/usr/src/log2mutation
+    working_dir: /usr/src/log2mutation
+    command: sh -c "node insertDummy.js & log2mutation -graphqlHost http://graphql-server:4000/graphql -follow"
+    depends_on:
+      - graphql-server

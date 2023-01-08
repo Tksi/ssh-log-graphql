@@ -1,0 +1,23 @@
+"認証情報に関する型"
+type AuthLogAuthInfo {
+  "ipアドレス"
+  ip: String!
+  "sshクライアントのユーザ名"
+  user: String!
+  "sshクライアントのパスワード"
+  password: String
+  "認証時間"
+  authtime: Float!
+  "RTT"
+  rtt: Float!
+  "アクセスした時間"
+  unixtime: Int!
+  "マイクロ秒"
+  usec: Int!
+  kex: Float!
+  newkey: Float!
+  "unixtimeとusecを元にDateオブジェクト(msec精度)にしたもの(ローカル時間で出力)"
+  date: String!
+  "判定"
+  detect: String!
+}

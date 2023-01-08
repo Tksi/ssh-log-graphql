@@ -1,0 +1,45 @@
+"数え上げ結果"
+type AuthLogCount {
+  "数えあげの基準(引数byで指定されたもの)"
+  _id: String
+  "_idの数え上げ結果"
+  count: Int!
+  "ipアドレス(_idごとの最初の値)"
+  ip: String!
+  "organizationName(_idごとの最初の値)"
+  organizationName: String
+  "国コード(_idごとの最初の値)"
+  countryCode: String
+  "国名(_idごとの最初の値)"
+  country: String
+  "ローカル時間(_idごとの最初の値)"
+  date: String!
+  "平均RTT"
+  rtt: Float!
+  "sshdを立てているサーバ名(_idごとの最初の値)"
+  sshdHost: String!
+}
+
+"数え上げ対象"
+enum By {
+  "年ごと"
+  YEAR
+  "月ごと"
+  MONTH
+  "日ごと"
+  DAY
+  "時間ごと"
+  HOUR
+  "ipアドレスごと"
+  ip
+  "ユーザ名ごと"
+  user
+  "パスワードごと"
+  password
+  "organizationNameごと"
+  organizationName
+  "国ごと"
+  country
+  "国コードごと"
+  countryCode
+}

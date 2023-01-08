@@ -1,0 +1,35 @@
+"Query(データの取り出し)"
+type Query {
+  "SSHログを返す"
+  authLogs(
+    "期間(デフォルト:今日中)"
+    range: InputTimeRange! = { from: "TODAY", to: "TOMORROW" }
+  ): [AuthLog!]!
+  "SSHログを数え上げ"
+  authLogCount(
+    "数え上げ対象(デフォルト:日ごと)"
+    by: By = DAY
+    "期間(デフォルト:今日中)"
+    range: InputTimeRange! = { from: "TODAY", to: "TOMORROW" }
+  ): [AuthLogCount!]!
+  "IPアドレスに関する情報"
+  authLogIp(
+    "期間(デフォルト:今日中)"
+    range: InputTimeRange! = { from: "TODAY", to: "TOMORROW" }
+    sshdHost: String! = "example.com"
+  ): [AuthLogIp]!
+  "都市情報"
+  authLogCity(
+    "期間(デフォルト:今日中)"
+    range: InputTimeRange! = { from: "TODAY", to: "TOMORROW" }
+    sshdHost: String! = "example.com"
+  ): [AuthLogCity]!
+}
+
+"日時範囲指定、dayjsでパース"
+input InputTimeRange {
+  "いつから(<=)"
+  from: String!
+  "いつまで(<)"
+  to: String
+}

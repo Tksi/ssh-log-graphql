@@ -1,0 +1,23 @@
+"AuthLogIpアドレスに関する型"
+type AuthLogIp {
+  "ipアドレス"
+  ip: String!
+  "ポート番号"
+  port: [Int]!
+  "国"
+  country: String!
+  "都市"
+  city: AuthLogCity
+  "クライアントバージョン"
+  clientVer: String!
+  "ASN"
+  asn: AuthLogAsn!
+  "認証情報"
+  authInfo: [AuthLogAuthInfo!]!
+  "そのIPアドレスからのユーザ名リスト"
+  user: [String!]!
+  "そのIPアドレスからのパスワードリスト"
+  password: [String]!
+  "期間"
+  range: TimeRange!
+}

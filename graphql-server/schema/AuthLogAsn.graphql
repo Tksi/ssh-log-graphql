@@ -1,0 +1,8 @@
+type AuthLogAsn {
+  "AuthLogOrganization"
+  organization: AuthLogOrg
+  "asn"
+  asn: [Int!]!
+  "期間"
+  range: TimeRange!
+}

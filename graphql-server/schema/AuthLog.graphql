@@ -1,0 +1,47 @@
+"SSHログの型、DBと一致"
+type AuthLog {
+  "sshdを立てているサーバ名"
+  sshdHost: String!
+  "ssh認証の結果"
+  result: String!
+  "sshクライアントのユーザ名"
+  user: String!
+  "sshクライアントのパスワード"
+  password: String
+  "接続元ipアドレス"
+  ip: String!
+  "接続元ポート番号"
+  port: Int
+  "認証時間"
+  authtime: Float
+  "判定"
+  detect: String
+  "RTT"
+  rtt: Float
+  "アクセスした時間"
+  unixtime: Int!
+  "マイクロ秒"
+  usec: Int!
+  kex: Float
+  newkey: Float
+  "unixtimeとusecを元にDateオブジェクト(msec精度)にしたもの(ローカル時間で出力)"
+  date: String!
+  "organizationName"
+  organizationName: String!
+  "大陸"
+  continentCode: String
+  "国名"
+  country: String
+  "国コード(2文字)"
+  countryCode: String
+  "国コード(3文字)"
+  countryCode3: String
+  "都市"
+  city: String
+  "経度"
+  longitude: Float
+  "緯度"
+  latitude: Float
+  "asn番号"
+  asn: Int!
+}

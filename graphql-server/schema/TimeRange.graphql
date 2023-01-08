@@ -1,0 +1,7 @@
+"日時範囲(Dateオブジェクトではない)"
+type TimeRange {
+  "いつから(<=)"
+  from: String!
+  "いつまで(<)"
+  to: String
+}

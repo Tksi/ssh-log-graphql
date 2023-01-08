@@ -1,0 +1,11 @@
+"都市"
+type AuthLogCity {
+  "都市名"
+  city: String
+  "属している国"
+  country: AuthLogCountry
+  "その国に属しているIPアドレスのリスト"
+  ipList: [AuthLogIp!]!
+  "範囲"
+  range: TimeRange!
+}

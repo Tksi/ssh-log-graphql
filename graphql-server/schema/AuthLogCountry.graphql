@@ -1,0 +1,15 @@
+"国"
+type AuthLogCountry {
+  "大陸"
+  continentCode: String!
+  "国名"
+  country: String!
+  "国コード"
+  countryCode: String!
+  "国コード(3文字)"
+  countryCode3: String!
+  "その国に属しているIPアドレスのリスト"
+  ipList: [AuthLogIp!]!
+  "範囲"
+  range: TimeRange!
+}
